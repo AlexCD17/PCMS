@@ -10,11 +10,11 @@ namespace PCMS.Models.AccountViewModels
     {
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public string Correo { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Contraseña { get; set; }
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
