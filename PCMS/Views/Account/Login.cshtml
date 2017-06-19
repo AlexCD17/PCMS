@@ -17,10 +17,10 @@
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Correo" class="col-md-2 control-label"></label>
+                    <label asp-for="Usr" class="col-md-2 control-label"></label>
                     <div class="col-md-10">
-                        <input asp-for="Correo" class="form-control" />
-                        <span asp-validation-for="Correo" class="text-danger"></span>
+                        <input asp-for="Usr" class="form-control" />
+                        <span asp-validation-for="Usr" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,7 +49,7 @@
                     <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
                 </p>
                 <p>
-                    <a asp-action="ForgotPassword">Forgot your password?</a>
+                    <a asp-action="ForgotPassword">Forgot your password?</a>    
                 </p>
             </form>
         </section>
