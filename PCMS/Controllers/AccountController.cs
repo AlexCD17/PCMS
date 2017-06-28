@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using PCMS.Models;
 using PCMS.Models.AccountViewModels;
 using PCMS.Services;
+using Microsoft.AspNetCore.Routing;
 
 namespace PCMS.Controllers
 {
@@ -70,7 +71,8 @@ namespace PCMS.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "Bienvenido.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", new RouteValueDictionary(
+    new { controller = "Users", action = "Index", id = 0 }));
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -99,7 +101,7 @@ namespace PCMS.Controllers
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            return View();
+            return View("~/Views/Users/Create.cshtml");
         }
 
         //
@@ -433,12 +435,12 @@ namespace PCMS.Controllers
             }
             if (result.IsLockedOut)
             {
-                _logger.LogWarning(7, "User account locked out.");
+                _logger.LogWarning(7, "Cuenta suspendida");
                 return View("Lockout");
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Invalid code.");
+                ModelState.AddModelError(string.Empty, "codigo invalido.");
                 return View(model);
             }
         }
