@@ -52,6 +52,16 @@ namespace PCMS
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            services.AddDbContext<PCMSContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("PCMSContext")));
+
+            services.AddDbContext<AdminContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("AdminContext")));
+
+            
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
